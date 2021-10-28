@@ -1,7 +1,9 @@
-package com.mironov.flowlayout;
+package com.mironov.flowlayout
+
 import android.content.Context
 import android.util.AttributeSet
 import android.view.ViewGroup
+import kotlin.math.max
 
 
 class FlowLayout : ViewGroup {
@@ -15,15 +17,15 @@ class FlowLayout : ViewGroup {
         ViewGroup.LayoutParams(0, 0) {
     }
 
-    constructor(context: Context?) : super(context) {}
-    constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs) {}
+    constructor(context: Context?) : super(context)
+    constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs)
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         assert(MeasureSpec.getMode(widthMeasureSpec) != MeasureSpec.UNSPECIFIED)
         val width = MeasureSpec.getSize(widthMeasureSpec) - paddingLeft - paddingRight
         var height = MeasureSpec.getSize(heightMeasureSpec) - paddingTop - paddingBottom
         val count = childCount
-        var lineHeightSpace = 5
+        var lineHeightSpace =0
         var xpos = paddingLeft
         var ypos = paddingTop
         val childHeightMeasureSpec: Int = if (MeasureSpec.getMode(heightMeasureSpec) == MeasureSpec.AT_MOST) {
@@ -39,14 +41,14 @@ class FlowLayout : ViewGroup {
                     MeasureSpec.makeMeasureSpec(width, MeasureSpec.AT_MOST),
                     childHeightMeasureSpec
                 )
-                val childw = child.measuredWidth
+                val childWidth = child.measuredWidth
                 lineHeightSpace =
-                    Math.max(lineHeightSpace, child.measuredHeight + lp.vertical_spacing)
-                if (xpos + childw > width) {
+                    max(lineHeightSpace, child.measuredHeight + lp.vertical_spacing)
+                if (xpos + childWidth > width) {
                     xpos = paddingLeft
                     ypos += lineHeightSpace
                 }
-                xpos += childw + lp.horizontal_spacing
+                xpos += childWidth + lp.horizontal_spacing
             }
         }
         this.lineHeightSpace = lineHeightSpace
@@ -76,15 +78,15 @@ class FlowLayout : ViewGroup {
         for (i in 0 until count) {
             val child = getChildAt(i)
             if (child.visibility != GONE) {
-                val childw = child.measuredWidth
-                val childh = child.measuredHeight
+                val childWidth = child.measuredWidth
+                val childHeight = child.measuredHeight
                 val lp = child.layoutParams as LayoutParams
-                if (xpos + childw > width) {
+                if (xpos + childWidth > width) {
                     xpos = paddingLeft
                     ypos += lineHeightSpace
                 }
-                child.layout(xpos, ypos, xpos + childw, ypos + childh)
-                xpos += childw + lp.horizontal_spacing
+                child.layout(xpos, ypos, xpos + childWidth, ypos + childHeight)
+                xpos += childWidth + lp.horizontal_spacing
             }
         }
     }

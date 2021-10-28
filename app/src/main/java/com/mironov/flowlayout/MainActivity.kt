@@ -12,10 +12,10 @@ import androidx.appcompat.app.AppCompatActivity
 class MainActivity : AppCompatActivity() {
 
     private var flowLayout: FlowLayout? = null
-    private var arrayList: ArrayList<TagModel>? = null
+
 
     private fun findViews() {
-        flowLayout = findViewById(R.id.flowBusiness) as FlowLayout
+        flowLayout = findViewById(R.id.flowBusiness)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,11 +26,9 @@ class MainActivity : AppCompatActivity() {
         addLayouts()
     }
 
-    @SuppressLint("ResourceAsColor")
+    @SuppressLint( "SetTextI18n", "InflateParams", "UseCompatLoadingForDrawables")
     private fun addLayouts() {
-        if (arrayList == null) {
-            arrayList = ArrayList()
-        }
+
         flowLayout!!.removeAllViews()
         for (i in 0..99) {
             val selected = booleanArrayOf(false)
@@ -38,12 +36,12 @@ class MainActivity : AppCompatActivity() {
             val textView = view.findViewById<View>(R.id.tvText) as TextView
             val imageView = view.findViewById<View>(R.id.imageView) as ImageView
 
-            arrayList!!.add(TagModel(i, false, TagModel.arr[i]))
-            textView.text = "#"+TagModel.arr[i]
+
+            textView.text = "#"+Tags.arr[i]
             textView.tag = i
 
             //Set spacing here
-            view.layoutParams=FlowLayout.LayoutParams(20,30)
+            view.layoutParams=FlowLayout.LayoutParams(20,20)
 
             imageView.setImageDrawable(resources.getDrawable(R.drawable.ic_arrow))
             view.setBackgroundResource(R.drawable.shape_unselected_tag)

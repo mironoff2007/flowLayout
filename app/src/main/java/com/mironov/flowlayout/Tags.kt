@@ -1,7 +1,8 @@
 package com.mironov.flowlayout
 
-class TagModel(i: Int, b: Boolean, s: String) {
-    companion object {val  arr= arrayListOf<String>("огород",
+class Tags {
+    companion object {val  arr= arrayListOf(
+        "огород",
         "калека",
         "козерог",
         "волхв",
