@@ -3,30 +3,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    >
-
+    tools:context=".MainActivity">
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp">
                 <com.mironov.flowlayout.FlowLayout
                     android:id="@+id/flowBusiness"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
-
                 </com.mironov.flowlayout.FlowLayout>
-            </LinearLayout>
-        </LinearLayout>
     </ScrollView>
 </RelativeLayout>

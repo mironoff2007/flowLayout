@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
 
-    private var flowLayout: FlowLayout? = null
+    private lateinit var flowLayout: FlowLayout
 
 
     private fun findViews() {
@@ -37,13 +37,15 @@ class MainActivity : AppCompatActivity() {
             val imageView = view.findViewById<View>(R.id.imageView) as ImageView
 
 
-            textView.text = "#"+Tags.arr[i]
+            textView.text = Tags.arr[i]
             textView.tag = i
 
             //Set spacing here
             view.layoutParams=FlowLayout.LayoutParams(20,20)
 
-            imageView.setImageDrawable(resources.getDrawable(R.drawable.ic_arrow))
+            if(i<20){imageView.setImageDrawable(resources.getDrawable(R.drawable.ic_1))}
+            else if(i<50){imageView.setImageDrawable(resources.getDrawable(R.drawable.ic_2))}
+            else {imageView.setImageDrawable(resources.getDrawable(R.drawable.ic_3))}
             view.setBackgroundResource(R.drawable.shape_unselected_tag)
 
             flowLayout!!.addView(view)

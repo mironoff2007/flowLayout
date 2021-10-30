@@ -1,34 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tool="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
+    android:orientation="horizontal"
     android:padding="2dp">
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/tvText"
-        android:layout_alignBottom="@id/tvText"
-        android:layout_marginLeft="5dp"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:layout_marginLeft="10dp"
+        android:layout_gravity="center"
         android:background="@color/transparent"
-        android:src="@android:drawable/btn_star"
-        android:layout_marginTop="3sp" />
-
+        android:src="@drawable/ic_1" />
     <TextView
         android:id="@+id/tvText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="2dp"
-        android:layout_marginRight="5dp"
-        android:layout_toEndOf="@+id/imageView"
+        android:layout_marginRight="10dp"
         android:background="@color/transparent"
-        android:paddingEnd="5dp"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="15sp"
-        android:layout_marginBottom="5sp"
         tool:text="Temp" />
-</RelativeLayout>
+</LinearLayout>
