@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp">
                 <com.mironov.flowlayout.FlowLayout
-                    android:id="@+id/flowBusiness"
+                    android:id="@+id/flowLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                 </com.mironov.flowlayout.FlowLayout>

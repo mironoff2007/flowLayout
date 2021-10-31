@@ -5,7 +5,6 @@ import android.util.AttributeSet
 import android.view.ViewGroup
 import kotlin.math.max
 
-
 class FlowLayout : ViewGroup {
     private var lineHeightSpace = 0
 

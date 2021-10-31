@@ -7,15 +7,12 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
-
-
 class MainActivity : AppCompatActivity() {
 
     private lateinit var flowLayout: FlowLayout
 
-
     private fun findViews() {
-        flowLayout = findViewById(R.id.flowBusiness)
+        flowLayout = findViewById(R.id.flowLayout)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,7 +26,7 @@ class MainActivity : AppCompatActivity() {
     @SuppressLint( "SetTextI18n", "InflateParams", "UseCompatLoadingForDrawables")
     private fun addLayouts() {
 
-        flowLayout!!.removeAllViews()
+        flowLayout.removeAllViews()
         for (i in 0..99) {
             val selected = booleanArrayOf(false)
             val view: View = this.layoutInflater.inflate(R.layout.flow_group, null)
@@ -43,9 +40,12 @@ class MainActivity : AppCompatActivity() {
             //Set spacing here
             view.layoutParams=FlowLayout.LayoutParams(20,20)
 
-            if(i<20){imageView.setImageDrawable(resources.getDrawable(R.drawable.ic_1))}
-            else if(i<50){imageView.setImageDrawable(resources.getDrawable(R.drawable.ic_2))}
-            else {imageView.setImageDrawable(resources.getDrawable(R.drawable.ic_3))}
+            when {
+                i<20 -> {imageView.setImageDrawable(resources.getDrawable(R.drawable.ic_1))}
+                i<50 -> {imageView.setImageDrawable(resources.getDrawable(R.drawable.ic_2))}
+                else -> {imageView.setImageDrawable(resources.getDrawable(R.drawable.ic_3))}
+            }
+
             view.setBackgroundResource(R.drawable.shape_unselected_tag)
 
             flowLayout!!.addView(view)
