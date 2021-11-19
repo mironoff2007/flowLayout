@@ -28,14 +28,13 @@ class MainActivity : AppCompatActivity() {
 
         flowLayout.removeAllViews()
         for (i in 0..99) {
-            val selected = booleanArrayOf(false)
             val view: View = this.layoutInflater.inflate(R.layout.flow_group, null)
             val textView = view.findViewById<View>(R.id.tvText) as TextView
             val imageView = view.findViewById<View>(R.id.imageView) as ImageView
 
 
             textView.text = Tags.arr[i]
-            textView.tag = i
+            view.tag = "unselected"
 
             //Set spacing here
             view.layoutParams=FlowLayout.LayoutParams(20,20)
@@ -51,12 +50,12 @@ class MainActivity : AppCompatActivity() {
             flowLayout!!.addView(view)
 
             view.setOnClickListener {
-                if (selected[0]) {
-                    selected[0] = false
+                if (it.tag=="selected") {
+                    it.tag= "unselected"
                     view.setBackgroundResource(R.drawable.shape_unselected_tag)
                     textView.setTextColor(resources.getColor(R.color.black))
                 } else {
-                    selected[0] = true
+                    it.tag= "selected"
                     view.setBackgroundResource(R.drawable.shape_selected_tag)
                     textView.setTextColor(resources.getColor(R.color.white))
                 }
